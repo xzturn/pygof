@@ -18,14 +18,26 @@
 # -*- coding: utf8 -*-
 
 
-class Singleton(object):
+class SimpleSingleton(object):
     """
     Simplest Singleton
     """
     def __new__(cls):
         if not hasattr(cls, 'instance'):
-            cls.instance = super(Singleton, cls).__new__(cls)
+            cls.instance = super(SimpleSingleton, cls).__new__(cls)
         return cls.instance
+
+
+class Singleton(object):
+    """
+    Classic Singleton
+    """
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if not Singleton._instance:
+            Singleton._instance = super(Singleton, cls).__new__(cls, *args, **kwargs)
+        return Singleton._instance
 
 
 class LazySingleton:
