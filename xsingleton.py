@@ -44,19 +44,19 @@ class LazySingleton:
     """
     Lazy Initialization Singleton
     """
-    __instance = None
+    _instance = None
 
     def __init__(self):
-        if not LazySingleton.__instance:
+        if not LazySingleton._instance:
             print("__init__ method called..")
         else:
             print("Instance already created:", self.get_instance())
 
     @classmethod
     def get_instance(cls):
-        if not cls.__instance:
-            cls.__instance = LazySingleton()
-        return cls.__instance
+        if not cls._instance:
+            cls._instance = LazySingleton()
+        return cls._instance
 
 
 class Borg(object):
